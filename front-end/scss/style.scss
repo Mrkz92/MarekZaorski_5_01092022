@@ -1,0 +1,61 @@
+@import "./pages/index";
+@import "./pages/product";
+// @import "./pages/cart";
+// @import "./pages/confirmation";
+@import "./utils/variables";
+// @import "./utils/mixins";
+// @import "./utils/functions";
+// @import "./components/buttons";
+// @import "./layouts/header";
+@import "./layouts/nav";
+// @import "./layouts/container";
+// @import "./layouts/form";
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+}
+
+body {
+    background-color: $second;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    header, section, footer {
+        background-color: $first;
+    }
+}
+
+main {
+    padding-top: $nav-height;
+   section {
+        margin: 20px;
+        padding: 30px 20px;
+        border-radius: 10px;
+        h2 {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+            padding: 2px 5px;
+            font-style: italic;
+            box-sizing: content-box;
+            width: fit-content;
+            border-top: $title-border;
+            border-bottom: $title-border;
+        }
+    }
+}
+
+footer {
+    // margin-top: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    ul {
+        display: flex;
+        li {
+            padding: .5rem;
+        }
+    }
+}
