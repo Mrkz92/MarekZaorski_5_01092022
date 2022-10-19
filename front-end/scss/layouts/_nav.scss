@@ -9,7 +9,7 @@
     box-sizing: border-box;
     padding: 15px 0px 15px 15px;
     box-shadow: inset 0 -1px 0 $fourth;
-    background-color: $first;
+    background-color: $section;
     &__icon {
         display: flex;
         align-items: center;
@@ -19,13 +19,11 @@
         }
     }
     &-menu {
-        background-color: $first;
         &__hamburger {
             display: none;
         }
         &__links {
             display: inline-block;
-            // position: absolute;
             margin: 0 10px;
             font-size: 16px;
             font-weight: 500;
@@ -33,13 +31,15 @@
                 box-sizing: content-box;
                 padding: 23px 5px;
                 transition: all .2s ease-out;
+                font-size: large;
                 font-weight: 600;
                 border-top: 4px solid transparent;
                 border-bottom: 4px solid transparent;
-                &.active, &:hover {
-                    color: purple;
-                    transform: scaleY(2);
-                    border-top: 4px solid purple;
+                &.active {
+                    @include active-link;
+                }
+                &:hover {
+                    @include hover-link;
                 }
             }
         }

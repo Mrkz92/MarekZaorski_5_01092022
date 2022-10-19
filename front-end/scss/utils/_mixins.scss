@@ -1,3 +1,19 @@
-@mixin name {
-    
+@mixin gradient($colour1: $third, $colour2: $second) {
+    background: linear-gradient(170deg, $colour1 25%, $colour2 75%);
+}
+
+@mixin product-info__shadow($colour) {
+    box-shadow: -15px 5px 50px -5px $colour;
+}
+
+@mixin active-link($colour: purple) {
+    color: $colour;
+    border-top: 5px solid $colour;
+}
+
+@mixin hover-link($colour: rgb(238, 121, 4)) {
+    color: $colour;
+    border-top: 5px solid $colour;
+    transform: scaleY(2);
+
 }

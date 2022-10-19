@@ -36,8 +36,9 @@
   margin: 6px;
   padding: 6px;
   background-color: #c5c5c6;
-  border: 2px solid #c5c5c6;
+  border: 2px solid black;
   border-radius: 10px;
+  box-shadow: -15px 5px 50px -5px hsl(325deg, 31%, 56%);
 }
 .product-card .product-frame {
   box-sizing: border-box;
@@ -59,6 +60,55 @@
   background-color: #f3e9f1;
 }
 
+#product-sheet {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+}
+#product-sheet #product-frame {
+  width: 75%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 3rem;
+  margin-right: auto;
+}
+#product-sheet #product-frame__image {
+  width: 100%;
+  height: 100%;
+}
+#product-sheet #product-info {
+  position: absolute;
+  bottom: 25%;
+  right: 2rem;
+  width: 300px;
+  height: 300px;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: #c5c5c6;
+  box-shadow: -15px 5px 50px -5px hsl(325deg, 31%, 56%);
+}
+#product-sheet #product-info__name {
+  padding: 0.5rem 1rem;
+  box-sizing: content-box;
+  background-color: hsl(27deg, 64%, 54%);
+}
+#product-sheet #product-info__description {
+  margin: 2rem 0;
+}
+#product-sheet #product-info__price {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 45%;
+}
+#product-sheet #product-info__button {
+  padding: 0.5rem 1rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 5%;
+}
+
 .nav {
   display: flex;
   position: fixed;
@@ -70,7 +120,7 @@
   box-sizing: border-box;
   padding: 15px 0px 15px 15px;
   box-shadow: inset 0 -1px 0 #c5c5c6;
-  background-color: #f3e9f1;
+  background-color: rgba(243, 233, 241, 0.9);
 }
 .nav__icon {
   display: flex;
@@ -79,9 +129,6 @@
 }
 .nav__icon img {
   height: 45px;
-}
-.nav-menu {
-  background-color: #f3e9f1;
 }
 .nav-menu__hamburger {
   display: none;
@@ -96,14 +143,19 @@
   box-sizing: content-box;
   padding: 23px 5px;
   transition: all 0.2s ease-out;
+  font-size: large;
   font-weight: 600;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
 }
-.nav-menu__links a.active, .nav-menu__links a:hover {
+.nav-menu__links a.active {
   color: purple;
+  border-top: 5px solid purple;
+}
+.nav-menu__links a:hover {
+  color: rgb(238, 121, 4);
+  border-top: 5px solid rgb(238, 121, 4);
   transform: scaleY(2);
-  border-top: 4px solid purple;
 }
 
 *, ::before, ::after {
@@ -115,11 +167,12 @@
 }
 
 body {
-  background-color: #b36d96;
+  background: linear-gradient(170deg, hsl(27deg, 64%, 54%) 25%, hsl(325deg, 31%, 56%) 75%);
+  /*background*/
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 body header, body section, body footer {
-  background-color: #f3e9f1;
+  background-color: rgba(243, 233, 241, 0.9);
 }
 
 main {

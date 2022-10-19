@@ -1,0 +1,57 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+#product-sheet {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+    #product-frame {
+        width: 75%;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 3rem;
+        margin-right: auto;
+        // border-radius: 10px;
+        // border: $title-border;
+        &__image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    #product-info {
+        position: absolute;
+        bottom: 25%;
+        right: 2rem;
+        width: 300px;
+        height: 300px;
+        // margin-left: auto;
+        padding: 1rem 3rem;
+        border-radius: 10px;
+        border: $title-border;
+        background-color: $fourth;
+        @include product-info__shadow($second);
+        &__name {
+            padding: .5rem 1rem;
+            box-sizing: content-box;
+            // transform: translate(-119%, -15%);
+            // border-top-left-radius: 5px;
+            background-color: $third;
+        }
+        &__description {
+            // transform: translateY(30%);
+            margin: 2rem 0;
+        }
+        &__price {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 45%;
+        }
+        &__button {
+            padding: .5rem 1rem;
+            position: absolute;
+            bottom: 1rem;
+            right: 5%;
+        }
+    }
+}

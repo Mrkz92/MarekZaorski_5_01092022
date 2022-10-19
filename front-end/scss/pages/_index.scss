@@ -1,4 +1,5 @@
 @import "../utils/variables";
+@import "../utils/mixins";
 
 #product-list {
     display: grid;
@@ -37,8 +38,9 @@
     margin: 6px;
     padding: 6px;
     background-color: $fourth;
-    border: 2px solid $fourth;
+    border: 2px solid black;
     border-radius: 10px;
+    @include product-info__shadow($second);
     .product-frame {
         box-sizing: border-box;
         overflow: hidden;
@@ -56,6 +58,6 @@
         padding: .5rem;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        background-color: $first;
+        background-color: $info;
     }
 }

@@ -3,7 +3,7 @@
 // @import "./pages/cart";
 // @import "./pages/confirmation";
 @import "./utils/variables";
-// @import "./utils/mixins";
+@import "./utils/mixins";
 // @import "./utils/functions";
 // @import "./components/buttons";
 // @import "./layouts/header";
@@ -20,10 +20,10 @@
 }
 
 body {
-    background-color: $second;
+    @include gradient; /*background*/
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     header, section, footer {
-        background-color: $first;
+        background-color: $section;
     }
 }
 
