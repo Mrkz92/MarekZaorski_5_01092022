@@ -1,24 +1,9 @@
-// const productId = new URL(location.href).searchParams.get("id");
-// const productJson = fetch(`http://localhost:3000/api/cameras/${productId}`).then(res => res.json());
-// console.log(productJson);
-
-// async function getProductId() {
-//     return new URL(location.href).searchParams.get("id");
-// }
-
-// async function getProductJson(productId) {
-//     fetch(`http://localhost:3000/api/cameras/${productId}`).then(res => res.json());
-// }
-
-
 /*------- Get product's JSON's data from API -------*/
 async function generateProductSheet() {
     const productId = new URL(location.href).searchParams.get("id");
     const productJson = await fetch(`http://localhost:3000/api/cameras/${productId}`).then(res => res.json());
-    // console.log(productJson);
     return productJson;
 };
-
 
 /*------- Generate  and impregnate product's sheet's html with JSON's data-------*/
 generateProductSheet()
@@ -148,36 +133,55 @@ generateProductSheet()
                 price: product.price /100,
                 id: product._id,
                 option: userOption,
-                quantity: 0,
+                quantity: 1,
             };
 
-            let cart = JSON.parse(localStorage.getItem("product"));
+            // let cart = JSON.parse(localStorage.getItem("product"));
 
             /*------- Push user's choice in local.storage -------*/
-            const pushProduct = () => {
-                console.log(cart);
-                cart.push(userChoice);
-                localStorage.setItem("product", JSON.stringify(cart));
-            }
-            if (cart) {
-                let foundProduct = cart.find(obj => obj.option == userChoice.option);
-                
-                if (foundProduct != undefined) {
-                    pushProduct();
-                    foundProduct.quantity++;
-                }
-                console.log(foundProduct);
-                console.log(cart);
-                console.log(foundProduct.quantity);
-                console.log(obj);
+            if (checkIfProductExist(userChoice)) {
+                const localStorageContent = Array.from(JSON.parse(localStorage.getItem('product')));
+                let indexOfObjectToIncrement = objIndex = localStorageContent.findIndex((obj => obj.option == userChoice.option));
+                localStorageContent[indexOfObjectToIncrement].quantity = localStorageContent[indexOfObjectToIncrement].quantity+1;
+                localStorage.setItem('product', JSON.stringify(localStorageContent));
 
             } else {
-                cart = [];
-                pushProduct();
-                product.quantity = 1;
-                console.log(cart);
-                console.log(product.quantity);
+                if(localStorage.length === 0) {
+                    const localStorageContent = [];
+                    localStorageContent.push(userChoice);
+                    localStorage.setItem('product', JSON.stringify(localStorageContent));
+                    confirm(' + $=product.name + a bien était ajouté au panier');
+                } else {
+                    const localStorageContent = Array.from(JSON.parse(localStorage.getItem('product')));
+                    localStorageContent.push(userChoice);
+                    localStorage.setItem('product', JSON.stringify(localStorageContent));
+                }
             }
+            // const pushProduct = () => {
+            //     console.log(cart);
+            //     cart.push(userChoice);
+            //     localStorage.setItem("product", JSON.stringify(cart));
+            // }
+            // if (cart) {
+            //     let foundProduct = cart.find(({o}) => ({o}).option == userChoice.option);
+                
+            //     if (foundProduct != undefined) {
+            //         foundProduct.quantity++;
+            //     } else {
+            //         pushProduct();
+            //     }
+            //     console.log(foundProduct);
+            //     console.log(cart);
+            //     console.log(foundProduct.quantity);
+            //     console.log(o);
+
+            // } else {
+            //     cart = [];
+            //     pushProduct();
+            //     userChoice.quantity = 1;
+            //     console.log(cart);
+            //     console.log(userChoice.quantity);
+            // }
         });
 });
                 
