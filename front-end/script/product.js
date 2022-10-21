@@ -1,24 +1,9 @@
-// const productId = new URL(location.href).searchParams.get("id");
-// const productJson = fetch(`http://localhost:3000/api/cameras/${productId}`).then(res => res.json());
-// console.log(productJson);
-
-// async function getProductId() {
-//     return new URL(location.href).searchParams.get("id");
-// }
-
-// async function getProductJson(productId) {
-//     fetch(`http://localhost:3000/api/cameras/${productId}`).then(res => res.json());
-// }
-
-
 /*------- Get product's JSON's data from API -------*/
 async function generateProductSheet() {
     const productId = new URL(location.href).searchParams.get("id");
     const productJson = await fetch(`http://localhost:3000/api/cameras/${productId}`).then(res => res.json());
-    // console.log(productJson);
     return productJson;
 };
-
 
 /*------- Generate  and impregnate product's sheet's html with JSON's data-------*/
 generateProductSheet()
@@ -103,37 +88,6 @@ generateProductSheet()
                             productButton.innerHTML = "Ajouter au panier"
                             productInfo.appendChild(productButton);
 
-        
-
-        /*------- Store the user's choice in the local storage -------*/
-        // function setCart(userChoice) {
-        //     localStorage.setItem("product", JSON.stringify(userChoice));
-        // }
-
-        // function getCart() {
-        //     let product = localStorage.getItem("product")
-        //     if (product == null) {
-        //         return [];
-        //     } else {
-        //         return JSON.parse(product);
-        //     }
-        // }
-
-        // function pushCart(userChoice) {
-        //     let cart = getCart();
-        //     let foundProduct = cart.find(p => p.option == userChoice.option);
-        //     if (foundProduct != undefined) {
-        //         foundProduct.quantity++;
-        //     } else {
-        //         product.quantity = 1;
-        //         cart.push(product);
-        //     }
-        //     setCart(product);
-        // }
-
-        // const sendToCart = document.getElementById("product-info__button")
-        // sendToCart.addEventListener("onclick", pushCart(userChoice));
-
         /*------- Listen click button -------*/
         const storeProduct = document.querySelector("#product-info__button");
         storeProduct.addEventListener('click', (e) => {
@@ -148,35 +102,29 @@ generateProductSheet()
                 price: product.price /100,
                 id: product._id,
                 option: userOption,
-                quantity: 0,
+                quantity: 1,
             };
 
-            let cart = JSON.parse(localStorage.getItem("product"));
-
             /*------- Push user's choice in local.storage -------*/
-            const pushProduct = () => {
-                console.log(cart);
-                cart.push(userChoice);
-                localStorage.setItem("product", JSON.stringify(cart));
-            }
-            if (cart) {
-                let foundProduct = cart.find(obj => obj.option == userChoice.option);
-                
-                if (foundProduct != undefined) {
-                    pushProduct();
-                    foundProduct.quantity++;
-                }
-                console.log(foundProduct);
-                console.log(cart);
-                console.log(foundProduct.quantity);
-                console.log(obj);
+            if (checkIfProductExist(userChoice)) {
+                const localStorageContent = Array.from(JSON.parse(localStorage.getItem('product')));
+                let indexOfObjectToIncrement = objIndex = localStorageContent.findIndex((obj => obj.option == userChoice.option));
+                localStorageContent[indexOfObjectToIncrement].quantity = localStorageContent[indexOfObjectToIncrement].quantity+1;
+                localStorage.setItem('product', JSON.stringify(localStorageContent));
+                alert(userChoice.name + " et son objectif " + userOption +' ont bien été ajouté au panier');
 
             } else {
-                cart = [];
-                pushProduct();
-                product.quantity = 1;
-                console.log(cart);
-                console.log(product.quantity);
+                if(localStorage.length === 0) {
+                    const localStorageContent = [];
+                    localStorageContent.push(userChoice);
+                    localStorage.setItem('product', JSON.stringify(localStorageContent));
+                    alert(userChoice.name + " et son objectif " + userOption +' ont bien été ajouté au panier');
+                } else {
+                    const localStorageContent = Array.from(JSON.parse(localStorage.getItem('product')));
+                    localStorageContent.push(userChoice);
+                    localStorage.setItem('product', JSON.stringify(localStorageContent));
+                    alert(userChoice.name + " et son objectif " + userOption +' ont bien été ajouté au panier');
+                }
             }
         });
 });
