@@ -1,0 +1,23 @@
+.button {
+    font-weight: bold;
+    width: fit-content;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    &:hover {
+        background-color: $darkerFirst;
+        animation: fill-hover-button 300ms ease;
+    }
+}
+
+.remove-button, .change-quantity__button {
+    display: flex;
+    @include margin-side-auto;
+    align-items: center;
+    height: auto;
+    cursor: pointer;
+    border: none;
+    &:hover {
+        color: $darkerFirst;
+    }
+}

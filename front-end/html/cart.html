@@ -7,7 +7,7 @@
 
     <link rel="icon" href="../../orinoco-icon.ico">
     <link rel="stylesheet" href="../scss/style.css">
-    <link rel="stylesheet" href="../scss/pages/_cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Orinoco - Panier</title>
 </head>
@@ -24,38 +24,23 @@
                     <span></span>
                 </button>
                 <div class="nav-menu__links">
-                    <a href="index.html">Accueil</a>
-                    <a href="cart.html" aria-current="page" class="active"">Panier</a>
+                    <a id="nav__link--index" class="nav-link" href="index.html">
+                        <i id="nav__link--icon-index" class="fa-solid fa-house nav__link--icon"></i>
+                        Accueil
+                    </a>
+                    <a id="nav__link--cart" class="nav-link active" href="cart.html" aria-current="page">
+                        Panier
+                        <span class="fa-layers fa-fw">
+                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon"></i>
+                            <span class="fa-layers-counter" id="span__cart-quantity"></span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <section class="cart-container">
-            <h2>Votre panier</h2>
-            <table class="cart-table">
-                <tbody>
-                    <tr class="table-column__title">
-                        <td class="product-name">Produit</td>
-                        <td class="product-price">Prix Unitaire</td>
-                        <td class="product-quantity">Quantité</td>
-                        <td class="product-total-price">Prix total</td>
-                    </tr>
-                    <tr class="table-product__info">
-                        <td class="product-name"></td>
-                        <td class="product-price"></td>
-                        <td class="product-quantity"></td>
-                        <td class="product-total-price"></td>
-                    </tr>
-                    <tr>
-                        <td>Prix total du panier</td>
-                        <td class="table-price"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <section class="form-container">
-            <h2>Vos informations</h2>
+        <section id="cart-section">
         </section>
     </main>
     <footer>
@@ -67,5 +52,10 @@
             </ul>
         </div>
     </footer>
+
+<!-- Script -->
+    <script src="../script/checkLocalStorage.js"></script>
+    <script src="../script/cart.js"></script>
+    
 </body>
 </html>

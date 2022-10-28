@@ -7,6 +7,7 @@
     
     <link rel="icon" href="../../orinoco-icon.ico">
     <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <title>Orinoco</title>
 </head>
@@ -25,8 +26,17 @@
                     <span></span>
                 </button>
                 <div class="nav-menu__links">
-                    <a href="index.html" aria-current="page" class="active">Accueil</a>
-                    <a href="cart.html">Panier</a>
+                    <a id="nav__link--index" class="nav-link active" href="index.html" aria-current="page">
+                        <i id="nav__link--icon-index" class="fa-solid fa-house nav__link--icon"></i>
+                        Accueil
+                    </a>
+                    <a id="nav__link--cart" class="nav-link" href="cart.html">
+                        Panier
+                        <span class="fa-layers fa-fw">
+                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon"></i>
+                            <span id="span__cart-quantity" class="fa-layers-counter"></span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -49,6 +59,7 @@
     </footer>
     
 <!-- Script  -->
+    <script src="../script/checkLocalStorage.js"></script>
     <script src="../script/index.js"></script>
 
 </body>

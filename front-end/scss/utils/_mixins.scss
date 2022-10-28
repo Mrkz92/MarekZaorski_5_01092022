@@ -1,19 +1,27 @@
-@mixin gradient($colour1: $third, $colour2: $second) {
-    background: linear-gradient(170deg, $colour1 25%, $colour2 75%);
+@mixin gradient($angle: 0deg, $colour1: $brand-second, $colour2: $brand-first) {
+    background: linear-gradient($angle, $colour1 25%, $colour2 75%);
 }
 
 @mixin product-info__shadow($colour) {
-    box-shadow: -15px 5px 50px -5px $colour;
+    box-shadow: -15px 5px 30px -5px $colour;
 }
 
-@mixin active-link($colour: purple) {
-    color: $colour;
-    border-top: 5px solid $colour;
+@mixin nav-link-border($colour: transparent) {
+    border-top: $nav-link-border($colour);
+    border-bottom: $nav-link-border($colour);
 }
 
-@mixin hover-link($colour: rgb(238, 121, 4)) {
+@mixin active-link($colour: $darkerSecond) {
     color: $colour;
-    border-top: 5px solid $colour;
-    transform: scaleY(2);
+    border-top: $nav-link-border($colour);
+}
 
+@mixin hover-link($colour: $darkerFirst) {
+    color: $colour;
+    border-top: $nav-link-border($colour);
+}
+
+@mixin margin-side-auto {
+    margin-left: auto;
+    margin-right: auto;
 }

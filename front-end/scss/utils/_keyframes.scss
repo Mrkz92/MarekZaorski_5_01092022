@@ -1,0 +1,24 @@
+@keyframes fill-hover-button {
+    
+    0%      {background: linear-gradient(90deg, $brand-second 0%, white 0%, white 100%)};
+
+    10%     {background: linear-gradient(90deg, $brand-second 0%, white 25%, white 100%)};
+    
+    20%     {background: linear-gradient(90deg, $brand-second 0%, white 50%, white 100%)};
+    
+    30%     {background: linear-gradient(90deg, $brand-first 0%, $brand-second 25%, white 75%, white 100%)};
+
+    40%     {background: linear-gradient(90deg, $brand-first 0%, $brand-second 50%, white 100%)};
+    
+    50%     {background: linear-gradient(90deg, $brand-first 0%, $brand-second 75%, $brand-second 100%)};
+    
+    60%     {background: linear-gradient(90deg, $brand-first 0%, $brand-second 100%)};
+    
+    70%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 33% $brand-second 100%)};
+
+    80%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 66%, $brand-first 100%)};
+    
+    90%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 100%)};
+
+    100%    {background: linear-gradient(90deg, $darkerFirst 0%, $darkerFirst 100%)};
+}
