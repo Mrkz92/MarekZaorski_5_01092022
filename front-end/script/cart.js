@@ -19,7 +19,7 @@ const userInformations =
 /*------- Store the user's choice in the local storage -------*/
 getCart();
 function getCart() {
-    if (localStorageContent === null) {
+    if (cart === null) {
         alert("Le panier est vide.");
         const cartEmpty = document.createElement("div")
         cartEmpty.setAttribute("id", "cart-empty")
@@ -46,53 +46,51 @@ function getCart() {
             `;
         cartSection.appendChild(cartContainer);
 
-        for(p = 0; p < localStorageContent.length; p++) {
+        for(p = 0; p < cart.length; p++) {
+
+            let focusProduct = cart[p];
+            console.log(focusProduct.quantity);
 
             const cartNotEmpty = document.createElement("tr")
             cartNotEmpty.classList.add("table__product")
             cartNotEmpty.innerHTML = `
-                <td class="table__product--name">${localStorageContent[p].name}</td>
-                <td class="table__product--option">${localStorageContent[p].option}</td>
-                <td class="table__product--price">${localStorageContent[p].price + ",00€"}</td>
+                <td class="table__product--name">${cart[p].name}</td>
+                <td class="table__product--option">${cart[p].option}</td>
+                <td class="table__product--price">${cart[p].price + ",00€"}</td>
                 <td class="table__product--quantity">
-                    ${"x" + localStorageContent[p].quantity}
+                    ${"x" + cart[p].quantity}
                     <span class="change-quantity">
                         <i class="fa-solid fa-square-minus product-button__minus change-quantity__button"></i>
                         <i class="fa-solid fa-square-plus product-button__plus change-quantity__button"></i>
                     </span>
                 </td>
-                <td class="table__product--total-price">${(localStorageContent[p].price)*(localStorageContent[p].quantity) + ",00€"}</td>
+                <td class="table__product--total-price">${(cart[p].price)*(cart[p].quantity) + ",00€"}</td>
                 `;
             const cartBody = document.querySelector("#cart-table__body")
             cartBody.appendChild(cartNotEmpty);
 
-            const productButtonMinus = () => {
-                document.querySelector(".product-button__minus").addEventListener('click', (e) => {
-                    localStorageContent[p].quantity = localStorageContent[p].quantity-1;
-                    console.log(localStorageContent[product].quantity);
-                    window.location.reload()
-                });
-            }
+            const productButtonMinus = document.querySelector(".product-button__minus")
+            productButtonMinus.addEventListener('click', () => {
+                focusProduct.quantity = focusProduct.quantity-1;
+                // window.location.reload()
+                console.log(focusProduct.quantity);
+            });
 
-            // const productButtonPlus = () => document.querySelector(".product-button__plus")
-            // productButtonPlus.setAttribute("type", "submit")
-            // productButtonPlus.addEventListener('click', (e) => {
-            //     localStorageContent[p].quantity = localStorageContent[p].quantity+1;
-            //     console.log(localStorageContent[product].quantity);
-            //     window.location.reload()
-            // });
-
-            // const changeQuantity = document.querySelector(".change-quantity")
-            // changeQuantity.appendChild(productButtonPlus);
+            const productButtonPlus = document.querySelector(".product-button__plus")
+            productButtonPlus.addEventListener('click', () => {
+                focusProduct.quantity = focusProduct.quantity+1;
+                // window.location.reload()
+                console.log(focusProduct.quantity);
+            });
 
             const clearProductButton = document.createElement("button")
             clearProductButton.classList.add("remove-button")
             clearProductButton.setAttribute("id", "clear__product-button")
             clearProductButton.innerHTML = `<i class="fa-solid fa-trash"></i>`
-            clearProductButton.addEventListener('click', () => {
-                localStorage.clear(localStorageContent[p]);
-                confirm(localStorageContent[p].name + " + " + localStorageContent[p].option + " a bien été retiré du panier.") 
-                window.location.reload()
+            clearProductButton.addEventListener('click', (removeFromCart) => {
+                Array.from(removeFromCart())
+                // window.location.reload();
+                console.log(focusProduct.name + " + " + focusProduct.option + " a bien été retiré du panier.")
             });
             cartNotEmpty.appendChild(clearProductButton);
         };
@@ -116,8 +114,8 @@ function getCart() {
             localStorage.clear();
             window.location.reload()
             confirm("Votre panier a bien été supprimé.")
-        })
-        cartTotal.appendChild(clearCartButton)
+        });
+        cartTotal.appendChild(clearCartButton);
 
         const formSection = document.createElement("section")
         formSection.setAttribute("id","form-section")
