@@ -266,8 +266,10 @@ h2.product-sheet__name {
 
 .table__product {
   padding: 1rem 0;
-  grid-column: 1/6 .table__product --name;
-  grid-column-grid-column: 1/2;
+  grid-column: 1/6;
+}
+.table__product--name {
+  grid-column: 1/2;
 }
 .table__product--option {
   grid-column: 2/3;

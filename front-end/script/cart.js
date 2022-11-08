@@ -17,8 +17,10 @@ const userInformations =
 
 
 /*------- Store the user's choice in the local storage -------*/
-getCart();
-function getCart() {
+
+fillCart();
+function fillCart() {
+
     if (cart === null) {
         alert("Le panier est vide.");
         const cartEmpty = document.createElement("div")
@@ -49,7 +51,7 @@ function getCart() {
         for(p = 0; p < cart.length; p++) {
 
             let focusProduct = cart[p];
-            console.log(focusProduct.quantity);
+            console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
 
             const cartNotEmpty = document.createElement("tr")
             cartNotEmpty.classList.add("table__product")
@@ -60,39 +62,48 @@ function getCart() {
                 <td class="table__product--quantity">
                     ${"x" + cart[p].quantity}
                     <span class="change-quantity">
-                        <i class="fa-solid fa-square-minus product-button__minus change-quantity__button"></i>
-                        <i class="fa-solid fa-square-plus product-button__plus change-quantity__button"></i>
+                        <button class="product-button product-button__minus change-quantity__button">
+                            <i class="fa-solid fa-square-minus"></i>
+                        </button>
+                        <button class="product-button product-button__plus change-quantity__button">
+                            <i class="fa-solid fa-square-plus product-button__plus change-quantity__button"></i>
+                        </button>
                     </span>
                 </td>
                 <td class="table__product--total-price">${(cart[p].price)*(cart[p].quantity) + ",00€"}</td>
+                <td class="">
+                    <button class="product-button product-button__remove">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
                 `;
             const cartBody = document.querySelector("#cart-table__body")
             cartBody.appendChild(cartNotEmpty);
 
-            const productButtonMinus = document.querySelector(".product-button__minus")
-            productButtonMinus.addEventListener('click', () => {
-                focusProduct.quantity = focusProduct.quantity-1;
-                // window.location.reload()
-                console.log(focusProduct.quantity);
-            });
+            // const productButtonMinus = document.querySelectorAll(".product-button__minus")
+            // productButtonMinus.addEventListener('click', () => {
+            //     focusProduct.quantity = focusProduct.quantity-1;
+            //     // window.location.reload()
+            //     console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
+            // });
 
-            const productButtonPlus = document.querySelector(".product-button__plus")
-            productButtonPlus.addEventListener('click', () => {
-                focusProduct.quantity = focusProduct.quantity+1;
-                // window.location.reload()
-                console.log(focusProduct.quantity);
-            });
+            // const productButtonPlus = document.querySelectorAll(".product-button__plus")
+            // productButtonPlus.addEventListener('click', () => {
+            //     focusProduct.quantity = focusProduct.quantity+1;
+            //     // window.location.reload()
+            //     console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
+            // });
 
-            const clearProductButton = document.createElement("button")
-            clearProductButton.classList.add("remove-button")
-            clearProductButton.setAttribute("id", "clear__product-button")
-            clearProductButton.innerHTML = `<i class="fa-solid fa-trash"></i>`
-            clearProductButton.addEventListener('click', (removeFromCart) => {
-                Array.from(removeFromCart())
-                // window.location.reload();
-                console.log(focusProduct.name + " + " + focusProduct.option + " a bien été retiré du panier.")
-            });
-            cartNotEmpty.appendChild(clearProductButton);
+            const productButtonRemove = () => {
+                document.querySelectorAll(".product-button__remove")
+                productButtonRemove.addEventListener("click", removeFromCart => {
+                    window.location.reload();
+                });
+            }
+
+            // const productButtonMinus = document.querySelectorAll("product-button__minus")
+            // productButtonMinus.addEventListener("click", )
+            // const productButtonPlus = document.querySelectorAll("product-button__plus");
         };
         
         const cartTotal = document.createElement("tr")
@@ -107,8 +118,7 @@ function getCart() {
 
         const clearCartButton = document.createElement("button")
         clearCartButton.setAttribute("id", "clear__cart-button")
-        clearCartButton.classList.add("remove-button")
-        clearCartButton.setAttribute("type", "submit")
+        clearCartButton.classList.add("product-button", "remove-button")
         clearCartButton.innerHTML = `<i class="fa-solid fa-trash"></i>`
         clearCartButton.addEventListener('click', () => {
             localStorage.clear();
@@ -121,5 +131,5 @@ function getCart() {
         formSection.setAttribute("id","form-section")
         formSection.innerHTML = userInformations;
         document.querySelector("main").appendChild(formSection)
-    }
-}
+    };
+};

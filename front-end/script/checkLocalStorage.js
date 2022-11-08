@@ -15,7 +15,11 @@ const checkIfProductExist = (productToCheck) => {
     }
 }
 
-const localStorageContent = () => {
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function getCart() {
     let cart = localStorage.getItem('product');
     if (localStorage == null) {
         return [];
@@ -24,12 +28,24 @@ const localStorageContent = () => {
     }
 }
 
-let cart = localStorageContent();
-console.log(cart)
+let cart = getCart();
 
-const removeFromCart = (product) => {
-    cart = cart.filter(p => p.option != product.option)
-    console.log(product)
+function removeFromCart(product) {
+    let cart = getCart();
+    cart = cart.filter(p => p.id != product.id)
+    
+    saveCart(cart);
+    console.log(cart);
+}
+
+function productMinusOne(product) {
+    let cart = getCart();
+    productQuantity
+}
+
+function productPlusOne(product) {
+    let cart = getCart();
+    productQuantity
 }
 
 // Calcul de la quantité et du prix total du panier
