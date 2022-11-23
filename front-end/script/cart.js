@@ -50,12 +50,14 @@ function fillCart() {
 
         for(p = 0; p < cart.length; p++) {
 
-            let focusProduct = cart[p];
-            console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
+            console.log(cart[p].name + " " + cart[p].option + " " + cart[p].quantity);
 
             const cartNotEmpty = document.createElement("tr")
             cartNotEmpty.classList.add("table__product")
             cartNotEmpty.innerHTML = `
+                <td class="table__product--frame">
+                    <img src="${cart[p].imageUrl}" alt="image-product-${cart[p].name}">
+                </td>
                 <td class="table__product--name">${cart[p].name}</td>
                 <td class="table__product--option">${cart[p].option}</td>
                 <td class="table__product--price">${cart[p].price + ",00€"}</td>
@@ -80,32 +82,16 @@ function fillCart() {
             const cartBody = document.querySelector("#cart-table__body")
             cartBody.appendChild(cartNotEmpty);
 
-            // const productButtonMinus = document.querySelectorAll(".product-button__minus")
-            // productButtonMinus.addEventListener('click', () => {
-            //     focusProduct.quantity = focusProduct.quantity-1;
-            //     // window.location.reload()
-            //     console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
-            // });
-
-            // const productButtonPlus = document.querySelectorAll(".product-button__plus")
-            // productButtonPlus.addEventListener('click', () => {
-            //     focusProduct.quantity = focusProduct.quantity+1;
-            //     // window.location.reload()
-            //     console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
-            // });
-
-            const productButtonRemove = () => {
-                document.querySelectorAll(".product-button__remove")
-                productButtonRemove.addEventListener("click", removeFromCart => {
-                    window.location.reload();
-                });
+            removeProductButton();
+            function removeProductButton() {
+                document.querySelector(".product-button__remove")
+                addEventListener("click", () => {
+                    removeFromCart()
+                    console.log(p)
+                })
             }
-
-            // const productButtonMinus = document.querySelectorAll("product-button__minus")
-            // productButtonMinus.addEventListener("click", )
-            // const productButtonPlus = document.querySelectorAll("product-button__plus");
         };
-        
+
         const cartTotal = document.createElement("tr")
         cartTotal.setAttribute("id", "cart__total")
         cartTotal.innerHTML = `

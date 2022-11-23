@@ -35,13 +35,15 @@
 }
 
 .product-card {
-    margin: 6px;
-    padding: 6px;
-    background-color: $lightShadow;
-    // border: $classic-border;
+    position: relative;
+    border: 2px solid $info;
     border-radius: 10px;
     @include product-info__shadow($brand-second);
     transition: all .2s;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
     &:hover {
     transform: scale(1.1);
 }
@@ -51,17 +53,21 @@
         max-height: 220px;
         &__image {
             width: 100%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            height: 100%;
+            object-fit: cover;
         }
     }
     .product-info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: .5rem;
+        box-sizing: border-box;
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
-        padding: .5rem;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        background-color: $info;
+        color: $info;
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
     }
 }

@@ -3,11 +3,15 @@
     min-width: 50%;
     max-width: 100%;
     .cart-table__part{
+        border-left: 1px solid black;
+        border-right: 1px solid black;
         min-width: 100%;
         display: contents;
         tr {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1.5fr 1fr 1.5fr .5fr;
+            grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr 1.5fr .5fr;
             grid-template-rows: auto;
             th {
                 text-align: center;
@@ -40,38 +44,46 @@
 }
 
 .table__product {
-    padding: 1rem 0;
-    grid-column: 1/6;
-    &--name {
+    padding: .5rem 0;
+    grid-column: 1/7;
+    &--image {
         grid-column: 1/2;
     }
-    &--option {
+    &--name {
         grid-column: 2/3;
     }
-    &--price {
+    &--option {
         grid-column: 3/4;
+    }
+    &--price {
+        grid-column: 4/5;
         text-align: end;
     }
     &--quantity {
-        grid-column: 4/5;
+        grid-column: 5/6;
         text-align: center;
+        > span {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        }
     }
     &--total-price {
-        grid-column: 5/6;
+        grid-column: 6/7;
         text-align: end;
     }
 }
 
 #cart__total {
     &--title {
-        grid-column: 3/4;
+        grid-column: 1/5;
     }
     &--quantity {
-        grid-column: 4/5;
+        grid-column: 5/6;
         text-align: center;
     }
     &--price {
-        grid-column: 5/6;
+        grid-column: 6/7;
         text-align: end;
     }
 }

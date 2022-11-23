@@ -1,22 +1,26 @@
 .button {
     font-weight: bold;
     width: fit-content;
+    text-transform: uppercase;
     cursor: pointer;
-    padding: .5rem 1rem;
+    padding: .5rem .75rem;
     border-radius: 10px;
     &:hover {
-        background-color: $darkerFirst;
-        animation: fill-hover-button 300ms ease;
+        color: white;
+        background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 20%, $brand-second 100%);
+        animation: fill-hover-button 300ms ease-out;
     }
 }
 
-.remove-button, .change-quantity__button {
+.product-button {
     display: flex;
+    flex-direction: row;
     @include margin-side-auto;
     align-items: center;
     height: auto;
     cursor: pointer;
     border: none;
+    background-color: none;
     &:hover {
         color: $darkerFirst;
     }

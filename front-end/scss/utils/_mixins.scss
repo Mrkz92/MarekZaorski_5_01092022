@@ -3,7 +3,7 @@
 }
 
 @mixin product-info__shadow($colour) {
-    box-shadow: -15px 5px 30px -5px $colour;
+    box-shadow: 0px 5px 10px 0px $colour;
 }
 
 @mixin nav-link-border($colour: transparent) {
@@ -13,12 +13,12 @@
 
 @mixin active-link($colour: $darkerSecond) {
     color: $colour;
-    border-top: $nav-link-border($colour);
+    border-bottom: $nav-link-border(transparent);
 }
 
 @mixin hover-link($colour: $darkerFirst) {
     color: $colour;
-    border-top: $nav-link-border($colour);
+    border-bottom: $nav-link-border($colour);
 }
 
 @mixin margin-side-auto {

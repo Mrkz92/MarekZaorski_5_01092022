@@ -30,6 +30,10 @@
                         <i id="nav__link--icon-index" class="fa-solid fa-house nav__link--icon"></i>
                         Accueil
                     </a>
+                    <div id="nav__link--products" class="dropdown">
+                        <button id="products-button" class="nav-link dropdown-button">Produits</button>
+                        <div id="products-list" class="dropdown-content"></div>
+                    </div>
                     <a id="nav__link--cart" class="nav-link" href="cart.html">
                         Panier
                         <span class="fa-layers fa-fw">
@@ -43,23 +47,7 @@
     </header>
     <main>
         <section id="product-container">
-            <!-- <div id="product-sheet">
-                <div id="product-frame">
-                    <img src="" alt="" id="product-frame__image">
-                </div>
-                <div id="product-info">
-                    <h3 id="product-info__name"></h3>
-                    <p id="product-info__description"></p>
-                    <span id="product-info__price"></span>
-                    <fieldset id="product-info__options">
-                        <legend></legend>
-                        <div class="product-options">
-                            <input type="checkbox" class="option-checkbox">
-                            <label for="" class="option-label"></label>
-                        </div>
-                    </fieldset>
-                </div>
-            </div> -->
+            <!-- Injection product-sheet with JS -->
         </section>
     </main>
     <footer>
@@ -73,7 +61,8 @@
     </footer>
 
 <!-- Script -->
-    <script src="../script/checkLocalStorage.js"></script>
+    <script src="../script/common.js"></script>
+    <script src="../script/navbar-list-product.js"></script>
     <script src="../script/product.js"></script>
     
 </body>
