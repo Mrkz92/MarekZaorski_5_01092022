@@ -1,6 +1,6 @@
 @import "./pages/index";
 @import "./pages/product";
-// @import "./pages/cart";
+@import "./pages/cart";
 @import "./pages/confirmation";
 @import "./utils/variables";
 @import "./utils/mixins";
@@ -28,7 +28,7 @@ body {
     background-attachment: fixed;
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     header, section, footer {
-        background-color: $section;
+        background-color: white;
     }
 }
 
@@ -44,7 +44,6 @@ main {
         // margin: 20px;
         @include margin-side-auto;
         padding: 20px 60px;
-        background-color: $section;
         h2 {
             // margin: .5rem 2rem 2rem 2rem;
             margin-top: .5rem;
