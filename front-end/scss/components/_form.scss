@@ -1,0 +1,31 @@
+form#user-information {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 1rem;
+    width: 100%;
+    @include margin-side-auto;
+    label {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 1rem;
+    }
+    input {
+        display: flex;
+        align-self: center;
+        height: 30px;
+        line-height: 1;
+    }
+}
+#form-section {
+    position: relative;
+    padding-bottom: 6rem;
+    #confirm-order {
+        position: absolute;
+        width: 250px;
+        bottom: 2rem;
+        left: calc(50% - 125px);
+    }
+}

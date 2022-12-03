@@ -1,18 +1,18 @@
 @import "./pages/index";
 @import "./pages/product";
-@import "./pages/cart";
-// @import "./pages/confirmation";
+// @import "./pages/cart";
+@import "./pages/confirmation";
 @import "./utils/variables";
 @import "./utils/mixins";
 @import "./utils/keyframes";
-// @import "./utils/functions";
 @import "./components/buttons";
 @import "./components/cart-grid";
 @import "./components/select";
+@import "./components/form";
 @import "./layouts/header";
 @import "./layouts/nav";
-// @import "./layouts/container";
-// @import "./layouts/form";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 *, ::before, ::after {
     margin: 0;
@@ -25,43 +25,53 @@
 body {
     height: 100vh;
     @include gradient($angle: 340deg); /*background*/
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-attachment: fixed;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     header, section, footer {
         background-color: $section;
     }
 }
 
 main {
-    padding-top: $nav-height;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 100vw;
+    // background-color: $section;
     // height: calc(100vh - $nav-height - $footer-height);
+    box-sizing: border-box;
    section {
         max-width: 900px;
-        margin: 20px;
+        // margin: 20px;
         @include margin-side-auto;
-        padding: 30px 40px;
-        border-radius: 10px;
-        @include product-info__shadow(black);
+        padding: 20px 60px;
+        background-color: $section;
         h2 {
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 1rem;
+            // margin: .5rem 2rem 2rem 2rem;
+            margin-top: .5rem;
             margin-bottom: 2rem;
-            padding: 2px 5px;
+            @include margin-side-auto;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
             font-style: italic;
-            box-sizing: content-box;
-            width: fit-content;
+            box-sizing: border-box;
+            width: auto;
+            color: white;
+            text-align: center;
+            @include gradient($angle: 325deg);
+            border-radius: 10px;
+            // @include product-info__shadow(white);
         }
     }
 }
 
 footer {
     width: 100vw;
-    min-height: 40px;
-    position: fixed;
-    bottom: 0;
+    min-height: 50px;
+    // position: fixed;
+    // bottom: 0;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-evenly;
     ul {
         display: flex;
         li {

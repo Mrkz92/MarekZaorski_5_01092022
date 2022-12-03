@@ -24,36 +24,35 @@ function saveCart(cart) {
 
 function getCart() {
     let cart = localStorage.getItem("cart");
-    if (cart == null) {
+    if (cart === null) {
         return [];
     } else {
         return JSON.parse(cart)
     }
-}
-
+};
 
 function addProduct(product) {
     let cart = getCart();
-    let foundProduct = cart.find(p => p.option === product.option);
-    if(foundProduct == undefined) {
-        product.quantity = 1
-        console.log(product.quantity)
+    let foundProduct = cart.find(p => (p.id && p.option) === (product.id && product.option));
+    if(foundProduct === undefined) {
+        cart.push(product);
+        product.quantity = 1;
+        console.log(product.id, product.option, product.quantity)
+        confirm(product.name + " et l'objectif " + product.option + " ont bien été ajouté au panier")
     }else{
-        product.quantity++;
-        console.log(product.quantity)
+        foundProduct.quantity ++;
+        console.log(foundProduct.id, foundProduct.option, foundProduct.quantity)
     }
-    cart.push(product);
     saveCart(cart);
-    alert(cart)
-}
+};
 
-function removeFromCart() {
+function removeFromCart(product) {
     let cart = getCart();
-    cart = cart.filter(p => p.id != cart.id);
-    
-    saveCart(cart);
-    console.log(cart);
-}
+    for(q = 0; q < cart.length; q++) {
+        cart = cart.filter(q => q.option != product.option);
+        saveCart(cart);
+    }
+};
 
 // function increaseProductQuantity(product) {
 //     productQuantity

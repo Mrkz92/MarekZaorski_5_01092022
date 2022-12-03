@@ -79,6 +79,7 @@ generateProductSheet()
                 option: userOption,
                 quantity: 0,
             };
+            addProduct(userChoice);
 
             /*------- Push the object in local.storage -------*/
             // if (checkIfProductExist(userChoice)) {
@@ -100,7 +101,6 @@ generateProductSheet()
             //         confirm(product.name + " + " + userOption + " a bien été ajouté au panier.");
             //     }
             // }
-            addProduct(userChoice);
             // window.location.reload()
         });
 });

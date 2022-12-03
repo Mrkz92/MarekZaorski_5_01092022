@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="icon" href="../../orinoco-icon.ico">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../scss/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Orinoco</title>
@@ -14,29 +14,33 @@
 <body>
     <header>
         <nav class="nav">
-            <a href="#" class="nav__icon" aria-label="visit homepage">
+            <a href="index.html" class="nav__icon" aria-label="visit homepage">
                 <img src="/front-end/logo.png" alt="brand logo">
             </a>
-            <div class="nav__menu">
-                <button class="nav__menu--hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <div class="nav-menu">
+                <button class="nav-menu__hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <div class="nav-menu__links">
-                    <a id="nav__link--index" class="nav-link" href="index.html">
+                    <!-- <a id="nav__link--index" class="nav-link" href="index.html">
                         <i id="nav__link--icon-index" class="fa-solid fa-house nav__link--icon"></i>
                         Accueil
-                    </a>
+                    </a> -->
                     <div id="nav__link--products" class="dropdown">
-                        <button id="products-button" class="nav-link dropdown-button">Produits</button>
+                        <button id="products-button" class="nav-link dropdown-button">
+                            Produits
+                            <i class="fa-solid fa-camera nav__link--icon"></i>
+                        </button>
                         <div id="products-list" class="dropdown-content"></div>
                     </div>
-                    <a id="nav__link--cart" class="nav-link" href="cart.html">
+                    <a id="nav__link--cart" class="nav-link" href="cart.html" aria-current="page">
                         Panier
                         <span class="fa-layers fa-fw">
-                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon"></i>
-                            <span id="span__cart-quantity" class="fa-layers-counter"></span>
+                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon">
+                                <span class="fa-layers-counter" id="span__cart-quantity"></span>
+                            </i>
                         </span>
                     </a>
                 </div>
@@ -44,7 +48,8 @@
         </nav>
     </header>
     <main>
-        
+        <section id="confirm-order__section">
+        </section>
     </main>
     <footer>
         <div>
@@ -55,5 +60,10 @@
             </ul>
         </div>
     </footer>
+    
+<!-- Script -->
+    <script src="../script/common.js"></script>
+    <script src="../script/navbar-list-product.js"></script>
+    <script src="../script/confirmation.js"></script>
 </body>
 </html>

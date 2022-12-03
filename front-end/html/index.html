@@ -13,12 +13,10 @@
 </head>
 <body>
     <header>
-        <nav class="nav">
-            <h1>    
-                <a href="index.html" class="nav__icon" aria-label="visit homepage" aria-current="page">
-                    <img src="/front-end/logo.png" alt="brand logo">
-                </a>
-            </h1>
+        <nav class="nav">   
+            <a href="index.html" class="nav__icon" aria-label="visit homepage" aria-current="page">
+                <img src="/front-end/logo.png" alt="brand logo">
+            </a>
             <div class="nav-menu">
                 <button class="nav-menu__hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
                     <span></span>
@@ -26,19 +24,23 @@
                     <span></span>
                 </button>
                 <div class="nav-menu__links">
-                    <a id="nav__link--index" class="nav-link active" href="index.html" aria-current="page">
+                    <!-- <a id="nav__link--index" class="nav-link active" href="index.html" aria-current="page">
                         <i id="nav__link--icon-index" class="fa-solid fa-house nav__link--icon"></i>
                         Accueil
-                    </a>
+                    </a> -->
                     <div id="nav__link--products" class="dropdown">
-                        <button id="products-button" class="nav-link dropdown-button">Produits</button>
+                        <button id="products-button" class="nav-link dropdown-button">
+                            Produits
+                            <i class="fa-solid fa-camera nav__link--icon"></i>
+                        </button>
                         <div id="products-list" class="dropdown-content"></div>
                     </div>
-                    <a id="nav__link--cart" class="nav-link" href="cart.html">
+                    <a id="nav__link--cart" class="nav-link" href="cart.html" aria-current="page">
                         Panier
                         <span class="fa-layers fa-fw">
-                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon"></i>
-                            <span id="span__cart-quantity" class="fa-layers-counter"></span>
+                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon">
+                                <span class="fa-layers-counter" id="span__cart-quantity"></span>
+                            </i>
                         </span>
                     </a>
                 </div>
@@ -47,7 +49,7 @@
     </header>
     <main>
         <section>
-            <h2>Nos produits</h2>
+            <h2>Découvrez nos superbes appareils photo vintages</h2>
             <div id="product-list">
             </div>
         </section>
