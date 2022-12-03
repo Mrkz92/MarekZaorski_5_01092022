@@ -14,11 +14,7 @@
     
     60%     {background: linear-gradient(90deg, $brand-first 0%, $brand-second 100%)};
     
-    70%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 33% $brand-second 100%)};
-
-    80%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 66%, $brand-first 100%)};
+    70%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 20% $brand-second 100%)};
     
-    90%     {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 100%)};
-
-    100%    {background: linear-gradient(90deg, $darkerFirst 0%, $darkerFirst 100%)};
+    100%    {background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 20%, $brand-second 100%)};
 }

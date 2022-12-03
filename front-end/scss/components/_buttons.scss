@@ -1,23 +1,42 @@
 .button {
     font-weight: bold;
     width: fit-content;
+    text-transform: uppercase;
     cursor: pointer;
-    padding: .5rem 1rem;
+    padding: .5rem .75rem;
     border-radius: 10px;
+    background-color: white;
+    @include button-shadow;
     &:hover {
-        background-color: $darkerFirst;
-        animation: fill-hover-button 300ms ease;
+        color: white;
+        background: linear-gradient(90deg, $darkerFirst 0%, $brand-first 20%, $brand-second 100%);
+        animation: fill-hover-button 300ms ease-out;
     }
 }
 
-.remove-button, .change-quantity__button {
+.product-button {
     display: flex;
+    flex-direction: row;
     @include margin-side-auto;
     align-items: center;
     height: auto;
     cursor: pointer;
     border: none;
+    background-color: transparent;
     &:hover {
         color: $darkerFirst;
     }
+}
+
+#clear__cart-button:hover {
+    color: $darkerSecond;
+}
+
+#confirm-order {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }

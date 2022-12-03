@@ -1,12 +1,7 @@
 generateIndex();
 
 function generateIndex() {
-    const getJsonData = fetch('http://localhost:3000/api/cameras')
-        .then(res => res.json());
-    getJsonData
-        .then(function(getJsonData) {
-        console.log(getJsonData)
-        })
+    
     getJsonData
         .then(function(listOfProducts) {
             const products = listOfProducts;
@@ -15,41 +10,19 @@ function generateIndex() {
 
                         let productContainer = document.createElement("div")
                         productContainer.classList.add("product-container")
+                        productContainer.innerHTML = `
+                        <a href="product.html?id=${products[p]._id}" class="product-link">
+                            <div class="product-card">
+                                <div class="product-frame">
+                                    <img class="product-frame__image" src="${products[p].imageUrl}" alt="image-product-${products[p].name}">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-info__name">${products[p].name}</h3>
+                                    <span class="product-info__price">${products[p].price/100 . toFixed(2)+'€'}</span>
+                                </div>
+                            </div>
+                        </a>`;
                         productList.appendChild(productContainer)
-
-                            let getProduct = document.createElement("a")
-                            getProduct.href = `product.html?id=${products[p]._id}`
-                            getProduct.classList.add("product-link")
-                            productContainer.appendChild(getProduct)
-
-                                let productCard = document.createElement("div")
-                                productCard.classList.add("product-card")
-                                getProduct.appendChild(productCard)
-
-                                    let productFrame = document.createElement("div")
-                                    productFrame.classList.add("product-frame")
-                                    productCard.appendChild(productFrame)
-
-                                        let productImage = document.createElement("img")
-                                        productImage.classList.add("product-frame__image")
-                                        productImage.src = products[p].imageUrl
-                                        productFrame.appendChild(productImage)
-
-                                    let productInfo = document.createElement("div")
-                                    productInfo.classList.add("product-info")
-                                    productCard.appendChild(productInfo)
-
-                                        let productName = document.createElement("h3")
-                                        productName.classList.add("product-info__name")
-                                        productName.innerText = products[p].name
-                                        productInfo.appendChild(productName)
-
-
-                                        let productPrice = document.createElement("span")
-                                        productPrice.classList.add("product-info__price")
-                                        productPrice.innerHTML = products[p].price/100 . toFixed(2)+'€'
-                                        productInfo.appendChild(productPrice);
-
                 }
         })
         .catch(function(err) {

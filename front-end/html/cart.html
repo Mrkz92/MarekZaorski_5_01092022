@@ -24,15 +24,23 @@
                     <span></span>
                 </button>
                 <div class="nav-menu__links">
-                    <a id="nav__link--index" class="nav-link" href="index.html">
+                    <!-- <a id="nav__link--index" class="nav-link" href="index.html">
                         <i id="nav__link--icon-index" class="fa-solid fa-house nav__link--icon"></i>
                         Accueil
-                    </a>
+                    </a> -->
+                    <div id="nav__link--products" class="dropdown">
+                        <button id="products-button" class="nav-link dropdown-button">
+                            Produits
+                            <i class="fa-solid fa-camera nav__link--icon"></i>
+                        </button>
+                        <div id="products-list" class="dropdown-content"></div>
+                    </div>
                     <a id="nav__link--cart" class="nav-link active" href="cart.html" aria-current="page">
                         Panier
                         <span class="fa-layers fa-fw">
-                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon"></i>
-                            <span class="fa-layers-counter" id="span__cart-quantity"></span>
+                            <i id="nav__link--icon-cart" class="fa-solid fa-cart-shopping nav__link--icon">
+                                <span class="fa-layers-counter" id="span__cart-quantity"></span>
+                            </i>
                         </span>
                     </a>
                 </div>
@@ -54,7 +62,8 @@
     </footer>
 
 <!-- Script -->
-    <script src="../script/checkLocalStorage.js"></script>
+    <script src="../script/common.js"></script>
+    <script src="../script/navbar-list-product.js"></script>
     <script src="../script/cart.js"></script>
     
 </body>

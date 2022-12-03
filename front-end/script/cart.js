@@ -1,33 +1,20 @@
 const cartSection = document.querySelector('#cart-section');
     
-const userInformations = 
-    `<h2>Vos informations</h2>
-    <form action="">
-        <label for="last-name">Nom:</label>
-        <input type="text" id="last-name" name="last-name">
-        <label for="first-name">Prénom:</label>
-        <input type="text" id="first-name" name="first-name"></br>
-        <label for="adress">Adresse:</label>
-        <input type="text" id="adress" name="adress">
-        <label for="city">Ville:</label>
-        <input type="text" id="city" name="city">
-        <label for="email">Adresse mail:</label>  
-        <input type="email" id="email" name="email">  
-    </form>`;
-
-
 /*------- Store the user's choice in the local storage -------*/
-
 fillCart();
 function fillCart() {
-
-    if (cart === null) {
+    getCart();
+    if (cart.length < 1 ) {
+        console.log("Panier vide");
         alert("Le panier est vide.");
         const cartEmpty = document.createElement("div")
         cartEmpty.setAttribute("id", "cart-empty")
-        cartEmpty.innerText = "Votre panier est vide."
+        cartEmpty.innerHTML = `
+            <h2>Votre panier</h2>
+            <div id="cart-empty">
+                <p>Aucun de nos superbes articles n'a été ajouté à votre panier.</p>
+            </div>`
         cartSection.appendChild(cartEmpty);
-        return [];
     } else {   
         const cartContainer = document.createElement("div")
         cartContainer.innerHTML = `
@@ -44,18 +31,18 @@ function fillCart() {
                 </thead>
                 <tbody class="cart-table__part" id="cart-table__body"></tbody>
                 <tfoot class="cart-table__part" id="cart-table__foot"></tfoot> 
-            </table>
-            `;
+            </table>`;
         cartSection.appendChild(cartContainer);
 
         for(p = 0; p < cart.length; p++) {
-
-            let focusProduct = cart[p];
-            console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
+            console.log(cart[p].name + " - " + cart[p].option + " x" + cart[p].quantity);
 
             const cartNotEmpty = document.createElement("tr")
             cartNotEmpty.classList.add("table__product")
             cartNotEmpty.innerHTML = `
+                <td class="table__product--frame">
+                    <img src="${cart[p].image}" alt="image-product-${cart[p].name}">
+                </td>
                 <td class="table__product--name">${cart[p].name}</td>
                 <td class="table__product--option">${cart[p].option}</td>
                 <td class="table__product--price">${cart[p].price + ",00€"}</td>
@@ -72,47 +59,30 @@ function fillCart() {
                 </td>
                 <td class="table__product--total-price">${(cart[p].price)*(cart[p].quantity) + ",00€"}</td>
                 <td class="">
-                    <button class="product-button product-button__remove">
-                        <i class="fa-solid fa-trash"></i>
+                    <button class="product-button">
+                        <i class="fa-solid fa-trash product-button__remove"></i>
                     </button>
-                </td>
-                `;
+                </td>`;
+
             const cartBody = document.querySelector("#cart-table__body")
             cartBody.appendChild(cartNotEmpty);
 
-            // const productButtonMinus = document.querySelectorAll(".product-button__minus")
-            // productButtonMinus.addEventListener('click', () => {
-            //     focusProduct.quantity = focusProduct.quantity-1;
-            //     // window.location.reload()
-            //     console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
-            // });
-
-            // const productButtonPlus = document.querySelectorAll(".product-button__plus")
-            // productButtonPlus.addEventListener('click', () => {
-            //     focusProduct.quantity = focusProduct.quantity+1;
-            //     // window.location.reload()
-            //     console.log(focusProduct.name + " " + focusProduct.option + " " + focusProduct.quantity);
-            // });
-
-            const productButtonRemove = () => {
-                document.querySelectorAll(".product-button__remove")
-                productButtonRemove.addEventListener("click", removeFromCart => {
-                    window.location.reload();
+            const removeProductButton = document.querySelectorAll(".product-button__remove")
+            for(q = 0; q < cart.length; q++) {
+                removeProductButton[p].addEventListener('click', () => {
+                    // removeFromCart(p);
+                    // window.location.reload()
+                    confirm("Ce produit a bien été supprimé.")
                 });
             }
-
-            // const productButtonMinus = document.querySelectorAll("product-button__minus")
-            // productButtonMinus.addEventListener("click", )
-            // const productButtonPlus = document.querySelectorAll("product-button__plus");
         };
-        
+
         const cartTotal = document.createElement("tr")
         cartTotal.setAttribute("id", "cart__total")
         cartTotal.innerHTML = `
             <td id="cart__total--title">Total du panier</td>
             <td id="cart__total--quantity">${"x" + cartTotalQuantity}</td>
-            <td id="cart__total--price">${cartTotalPrice + ",00€"}</td>
-            `;
+            <td id="cart__total--price">${cartTotalPrice + ",00€"}</td>`;
         const cartFoot = document.querySelector("#cart-table__foot")
         cartFoot.appendChild(cartTotal);
 
@@ -127,9 +97,32 @@ function fillCart() {
         });
         cartTotal.appendChild(clearCartButton);
 
+        const userForm = 
+        `<h2>Vos informations</h2>
+        <form id="user-form" action="">
+            <label for="last-name">Nom:</label>
+            <input type="text" id="last-name" name="last-name" required>
+            <label for="first-name">Prénom:</label>
+            <input type="text" id="first-name" name="first-name" required>
+            <label for="adress">Adresse:</label>
+            <input type="text" id="adress" name="adress" required>
+            <label for="city">Ville:</label>
+            <input type="text" id="city" name="city" required>
+            <label for="email">Adresse mail:</label>  
+            <input type="email" id="email" name="email" required>
+            <button type="submit" id="confirm-order" class="button"><a href="confirmation.html">Confirmez votre commande</a></button>
+        </form>`;
         const formSection = document.createElement("section")
-        formSection.setAttribute("id","form-section")
-        formSection.innerHTML = userInformations;
+        formSection.setAttribute("id","form-section");
+        formSection.innerHTML = userForm;
         document.querySelector("main").appendChild(formSection)
+
+
+
+        const confirmOrder = document.querySelector("#confirm-order")
+        confirmOrder.addEventListener('click', () => {
+            // localStorage.clear();
+        })
+        formSection.appendChild(confirmOrder)
     };
 };

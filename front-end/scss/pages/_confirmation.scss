@@ -1,0 +1,10 @@
+#confirm-order__section {
+    display: flex;
+    justify-content: center;
+    p {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        @include padding-side-auto;
+        text-align: center;
+    }
+}
