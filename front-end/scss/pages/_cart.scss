@@ -1,2 +1,9 @@
-@import "./components/cart-grid";
-@import "./components/form";
+#cart-empty {
+    border: $classic-border;
+    background-color: $section;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    // align-items: center;
+}

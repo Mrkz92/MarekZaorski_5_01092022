@@ -164,6 +164,15 @@
   margin-right: auto;
 }
 
+#cart-empty {
+  border: 2px solid black;
+  background-color: rgb(243, 233, 241);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 #confirm-order__section {
   display: flex;
   justify-content: center;
@@ -244,7 +253,7 @@
   cursor: pointer;
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
-  background-color: white;
+  background-color: rgb(243, 233, 241);
   box-shadow: 0 0 10px 2px grey;
 }
 .button:hover {
@@ -547,7 +556,7 @@ body {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 body header, body section, body footer {
-  background-color: rgb(243, 233, 241);
+  background-color: white;
 }
 
 main {
@@ -561,7 +570,6 @@ main section {
   margin-left: auto;
   margin-right: auto;
   padding: 20px 60px;
-  background-color: rgb(243, 233, 241);
 }
 main section h2 {
   margin-top: 0.5rem;

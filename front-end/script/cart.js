@@ -6,19 +6,15 @@ function fillCart() {
     getCart();
     if (cart.length < 1 ) {
         console.log("Panier vide");
-        alert("Le panier est vide.");
         const cartEmpty = document.createElement("div")
         cartEmpty.setAttribute("id", "cart-empty")
         cartEmpty.innerHTML = `
-            <h2>Votre panier</h2>
-            <div id="cart-empty">
-                <p>Aucun de nos superbes articles n'a été ajouté à votre panier.</p>
-            </div>`
+                <p>Comme c'est bizarre,
+                </br>Aucun de nos superbes articles n'a été ajouté à votre panier.</p>`
         cartSection.appendChild(cartEmpty);
     } else {   
         const cartContainer = document.createElement("div")
         cartContainer.innerHTML = `
-            <h2>Votre panier</h2>
             <table class="cart-table" id="cart-table">
                 <thead class="cart-table__part" id="cart-table__head">
                     <tr>
