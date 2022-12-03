@@ -37,10 +37,14 @@
 .product-card {
     margin: 6px;
     padding: 6px;
-    background-color: $fourth;
-    border: 2px solid black;
+    background-color: $lightShadow;
+    // border: $classic-border;
     border-radius: 10px;
-    @include product-info__shadow($second);
+    @include product-info__shadow($brand-second);
+    transition: all .2s;
+    &:hover {
+    transform: scale(1.1);
+}
     .product-frame {
         box-sizing: border-box;
         overflow: hidden;

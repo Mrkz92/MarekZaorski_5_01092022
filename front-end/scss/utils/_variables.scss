@@ -2,10 +2,14 @@
 
 $info: #f3e9f1;
 $section: rgba(243,233,241,.9);
-$second: hsl(325, 31%, 56%);
-$third: hsl(27, 64%, 54%);
-$fourth: #c5c5c6;
+$brand-first: hsl(27, 64%, 54%);
+$darkerFirst: rgb(238, 121, 4);
+$brand-second: hsl(325, 31%, 56%);
+$darkerSecond: #800080;
+$lightShadow: #c5c5c6;
 
 $nav-height: 75px;
 
-$title-border: 2px solid black;
+$classic-border: 2px solid black;
+
+$nav-link-border: 5px solid;
